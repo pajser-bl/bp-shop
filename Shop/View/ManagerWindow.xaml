@@ -20,16 +20,18 @@
         </Grid.RowDefinitions>
 
         <TabControl Grid.Row="1" Grid.Column="1">
-            <TabItem x:Name="Types" Header="Product types">
+            <TabItem x:Name="types" Header="Product types">
                 <TreeView x:Name="ProductTypeTree">
                     <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type self:ProductType}" ItemsSource="{Binding subTypes}">
                             <TextBlock Text="{Binding name}"/>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
             </TabItem>
-            <TabItem x:Name="Products" Header="Products"></TabItem>
+            <TabItem x:Name="products" Header="Products">
+                <DataGrid Grid.Row="2" Grid.Column="1" x:Name = "Products" CanUserDeleteRows="True" MouseDoubleClick="Products_MouseDoubleClick" IsReadOnly="False"/>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

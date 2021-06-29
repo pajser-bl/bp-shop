@@ -36,7 +36,7 @@ namespace Shop.DAO.Mappers
                 if (this.Connection.State != ConnectionState.Open)
                     this.Connection.Open();
 
-                using MySqlCommand command = new MySqlCommand("SELECT * FROM [products_types] where id=@id", (MySqlConnection)this.Connection);
+                using MySqlCommand command = new MySqlCommand("SELECT * FROM products_types where id=@id", (MySqlConnection)this.Connection);
                 command.Parameters.AddWithValue("@id", ID);
                 using MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -66,8 +66,11 @@ namespace Shop.DAO.Mappers
                 id=reader.GetInt32(0),
                 name=reader.GetString(1),
                 description=reader.GetString(2),
-                id_parent_product_type=reader.GetInt32(3)
             };
+            if (!reader.IsDBNull(3))
+            {
+                returnValue.id_parent_product_type = reader.GetInt32(3);
+            }
             return returnValue;
         }
 
@@ -81,7 +84,7 @@ namespace Shop.DAO.Mappers
                 if (this.Connection.State != ConnectionState.Open)
                     this.Connection.Open();
 
-                using MySqlCommand command = new MySqlCommand("SELECT * FROM [products_types]", (MySqlConnection)this.Connection);
+                using MySqlCommand command = new MySqlCommand("SELECT * FROM products_types ORDER BY parent_product_type_id ASC", (MySqlConnection)this.Connection);
                 using MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {

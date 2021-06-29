@@ -6,7 +6,7 @@ namespace Shop.DAO.Models.Shop
 {
     class ProductType:NameDesc
     {
-        public int? id_parent_product_type;
-        public ProductType parentProductType;
+        public int? id_parent_product_type { get; set; }
+        public List<ProductType> subTypes { get; set; }
     }
 }

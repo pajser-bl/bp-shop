@@ -1,6 +1,9 @@
 ﻿using MySqlConnector;
+using Shop.DAO.Mappers;
+using Shop.DAO.Models.Shop;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Documents;
 
 namespace Shop
@@ -37,6 +40,18 @@ namespace Shop
             MySqlDataReader reader = command.ExecuteReader();
             reader.Read();
             return reader;
+        }
+        public static List<ProductType> getProductTypesTree()
+        {
+            List<ProductType> ptL = new ProductTypeMapper(GetSqlSession()).Select(out _);
+
+
+            foreach (ProductType pt in ptL)
+            {
+                pt.subTypes= ptL.Where(child => child.id_parent_product_type == pt.id)
+                                              .ToList();
+            }
+            return ptL.Where(child => child.id_parent_product_type == null).ToList(); ;
         }
     }
 }

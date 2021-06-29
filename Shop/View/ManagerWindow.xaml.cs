@@ -3,6 +3,7 @@ using Shop.DAO.Mappers;
 using Shop.DAO.Models.Shop;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,12 +22,20 @@ namespace Shop.View
     public partial class ManagerWindow : Window
     {
 
-        private ProductTypeMapper productTypeMapper;
-        private ProductMapper productMapper;
         public ManagerWindow(User user)
         {
             InitializeComponent();
-            //ProductTypeTree.ItemsSource 
+            List<ProductType> aa = Utils.getProductTypesTree();
+            foreach (ProductType a in aa)
+            {
+                ProductTypeTree.Items.Add(a);
+            }
+
+        }
+
+        private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

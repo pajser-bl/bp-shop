@@ -2,8 +2,8 @@
 {
     internal class NameDesc
     {
-        public int? id;
-        public string name;
-        public string description;
+        public int? id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
     }
 }
