@@ -21,13 +21,20 @@
 
         <TabControl Grid.Row="1" Grid.Column="1">
             <TabItem x:Name="types" Header="Product types">
-                <TreeView x:Name="ProductTypeTree">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TreeView x:Name="ProductTypeTree" Grid.Row="0" MouseDoubleClick="ProductType_MouseDoubleClick">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate DataType="{x:Type self:ProductType}" ItemsSource="{Binding subTypes}">
                             <TextBlock Text="{Binding name}"/>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
+                <Button x:Name="NewProductType" FontSize="15" Margin="8" Content="New product type" Click="NewProductType_Click" Grid.Row="1" Height="30"/>
+            </Grid>
             </TabItem>
             <TabItem x:Name="products" Header="Products">
                 <DataGrid Grid.Row="2" Grid.Column="1" x:Name = "Products" CanUserDeleteRows="True" MouseDoubleClick="Products_MouseDoubleClick" IsReadOnly="False"/>

@@ -1,6 +1,6 @@
 ﻿namespace Shop.DAO
 {
-    internal class NameDesc
+    public class NameDesc
     {
         public int? id { get; set; }
         public string name { get; set; }

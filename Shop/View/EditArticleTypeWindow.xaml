@@ -26,7 +26,7 @@
         <TextBox Name="idTextBox" Grid.Row="1" Grid.Column="2" IsReadOnly="True"/>
 
         <Label Name="nameLable" Grid.Row="2" Grid.Column="1" Content="Name"/>
-        <ComboBox Name="nameComboBox" Grid.Row="2" Grid.Column="2"/>
+        <TextBox Name="nameTextBox" Grid.Row="2" Grid.Column="2"/>
 
         <Label Name="descriptionLable" Grid.Row="3" Grid.Column="1" Content="Description"/>
         <TextBox Name="descriptionTextBox" Grid.Row="3" Grid.Column="2"/>

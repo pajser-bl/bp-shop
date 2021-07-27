@@ -32,10 +32,32 @@ namespace Shop.View
             }
 
         }
-
+        private void ProductType_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EditArticleTypeWindow editArticleTypeWindow = new EditArticleTypeWindow((ProductType)ProductTypeTree.SelectedItem);
+            editArticleTypeWindow.ShowDialog();
+            ProductTypeTree.Items.Clear();
+            List<ProductType> aa = Utils.getProductTypesTree();
+            foreach (ProductType a in aa)
+            {
+                ProductTypeTree.Items.Add(a);
+            }
+        }
         private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void NewProductType_Click(object sender, RoutedEventArgs e)
+        {
+            EditArticleTypeWindow editArticleTypeWindow = new EditArticleTypeWindow(null);
+            editArticleTypeWindow.ShowDialog();
+            ProductTypeTree.Items.Clear();
+            List<ProductType> aa = Utils.getProductTypesTree();
+            foreach (ProductType a in aa)
+            {
+                ProductTypeTree.Items.Add(a);
+            }
         }
     }
 }
