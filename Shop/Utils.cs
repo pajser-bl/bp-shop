@@ -53,5 +53,15 @@ namespace Shop
             }
             return ptL.Where(child => child.id_parent_product_type == null).ToList(); ;
         }
+        public static List<string> getProductTypesNames()
+        {
+            List<string> ptN = new List<string>();
+            MySqlDataReader reader = GetMySqlQueryReader("select * from products_types_names");
+            while (reader.Read())
+            {
+                ptN.Add(reader.GetString(0));
+            }
+            return ptN;
+        }
     }
 }

@@ -6,10 +6,10 @@ namespace Shop.DAO.Models.Shop
 {
     class Product:NameDesc
     {
-        public int id_product_type;
-        public ProductType productType;
-        public decimal price;
-        
+        public int id_product_type { get; set; }
+        public ProductType productType { get; set; }
+        public decimal price { get; set; }
+
 
     }
 }

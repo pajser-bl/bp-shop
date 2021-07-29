@@ -8,5 +8,13 @@ namespace Shop.DAO.Models.Shop
     {
         public int? id_parent_product_type { get; set; }
         public List<ProductType> subTypes { get; set; }
+
+        public String toString()
+        {
+            return name;
+        }
+
     }
+
+
 }

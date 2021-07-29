@@ -21,43 +21,59 @@ namespace Shop.View
     /// </summary>
     public partial class ManagerWindow : Window
     {
-
+        List<ProductType> productTypes;
+        List<Product> allProducts;
+        ProductMapper productMapper;
+       
         public ManagerWindow(User user)
         {
             InitializeComponent();
-            List<ProductType> aa = Utils.getProductTypesTree();
-            foreach (ProductType a in aa)
-            {
-                ProductTypeTree.Items.Add(a);
-            }
+            this.productMapper = new ProductMapper(Utils.GetSqlSession());
+            updateProductTree();
+            updateProducts();
+        }
+
+        public void updateProducts()
+        {
+            this.allProducts = this.productMapper.Select(out _);
+            Products.ItemsSource = this.allProducts.ToList();
 
         }
-        private void ProductType_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+
+        public void updateProductTree()
         {
-            EditArticleTypeWindow editArticleTypeWindow = new EditArticleTypeWindow((ProductType)ProductTypeTree.SelectedItem);
-            editArticleTypeWindow.ShowDialog();
             ProductTypeTree.Items.Clear();
-            List<ProductType> aa = Utils.getProductTypesTree();
-            foreach (ProductType a in aa)
+            this.productTypes = Utils.getProductTypesTree();
+            foreach (ProductType a in productTypes)
             {
                 ProductTypeTree.Items.Add(a);
             }
-        }
-        private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
         }
 
         private void NewProductType_Click(object sender, RoutedEventArgs e)
         {
             EditArticleTypeWindow editArticleTypeWindow = new EditArticleTypeWindow(null);
             editArticleTypeWindow.ShowDialog();
-            ProductTypeTree.Items.Clear();
-            List<ProductType> aa = Utils.getProductTypesTree();
-            foreach (ProductType a in aa)
-            {
-                ProductTypeTree.Items.Add(a);
-            }
+            updateProductTree();
         }
+
+        private void ProductType_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EditArticleTypeWindow editArticleTypeWindow = new EditArticleTypeWindow((ProductType)ProductTypeTree.SelectedItem);
+            editArticleTypeWindow.ShowDialog();
+            updateProductTree();
+        }
+
+        private void NewProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
     }
 }

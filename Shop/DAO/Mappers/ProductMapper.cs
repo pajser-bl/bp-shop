@@ -86,7 +86,7 @@ namespace Shop.DAO.Mappers
                 if (this.Connection.State != ConnectionState.Open)
                     this.Connection.Open();
 
-                using MySqlCommand command = new MySqlCommand("SELECT * FROM [product_with_type]", (MySqlConnection)this.Connection);
+                using MySqlCommand command = new MySqlCommand("SELECT * FROM product_with_type", (MySqlConnection)this.Connection);
                 using MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {

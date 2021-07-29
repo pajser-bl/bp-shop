@@ -32,9 +32,12 @@
         <TextBox Name="descriptionTextBox" Grid.Row="3" Grid.Column="2"/>
 
         <Label Name="parentTypeLable" Grid.Row="4" Grid.Column="1" Content="Parent type"/>
-        <ComboBox Name="parentTypeComboBox" Grid.Row="4" Grid.Column="2"/>
-        
-        
+        <ComboBox Name="parentTypeComboBox" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding ProductType}" DisplayMemberPath="name"/>
+
+
+        <Button Name="deleteButton" Grid.Row="5" Grid.Column="1" Content="Delete" Click="deleteButton_Click"/>
+        <Button Name="saveButton" Grid.Row="5" Grid.Column="2" Content="Save" Click="saveButton_Click"/>
+
 
     </Grid>
 </Window>
