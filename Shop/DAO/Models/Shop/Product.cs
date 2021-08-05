@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Shop.DAO.Models.Shop
 {
-    class Product:NameDesc
+    public class Product:NameDesc
     {
         public int id_product_type { get; set; }
         public ProductType productType { get; set; }

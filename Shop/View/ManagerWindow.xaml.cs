@@ -21,8 +21,6 @@ namespace Shop.View
     /// </summary>
     public partial class ManagerWindow : Window
     {
-        List<ProductType> productTypes;
-        List<Product> allProducts;
         ProductMapper productMapper;
        
         public ManagerWindow(User user)
@@ -35,17 +33,14 @@ namespace Shop.View
 
         public void updateProducts()
         {
-            this.allProducts = this.productMapper.Select(out _);
-            Products.ItemsSource = this.allProducts.ToList();
-
+            Products.ItemsSource = this.productMapper.Select(out _);
         }
 
 
         public void updateProductTree()
         {
             ProductTypeTree.Items.Clear();
-            this.productTypes = Utils.getProductTypesTree();
-            foreach (ProductType a in productTypes)
+            foreach (ProductType a in Utils.getProductTypesTree())
             {
                 ProductTypeTree.Items.Add(a);
             }
@@ -67,12 +62,17 @@ namespace Shop.View
 
         private void NewProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            EditProductWindow _new = new EditProductWindow(null);
+            _new.ShowDialog();
+            updateProducts();
         }
 
         private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            Product selected = (Product)Products.SelectedItem;
+            EditProductWindow _new = new EditProductWindow(selected);
+            _new.ShowDialog();
+            updateProducts();
         }
 
     }

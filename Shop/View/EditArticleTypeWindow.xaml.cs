@@ -22,14 +22,12 @@ namespace Shop.View
     {
         private ProductType productType;
         private ProductTypeMapper productTypeMapper;
-        private List<ProductType> productTypes;
         public EditArticleTypeWindow(ProductType productType)
         {
             InitializeComponent();
             this.productTypeMapper = new ProductTypeMapper(Utils.GetSqlSession());
             this.productType = productType;
-            this.productTypes = this.productTypeMapper.Select(out _);
-            parentTypeComboBox.ItemsSource = this.productTypes;
+            parentTypeComboBox.ItemsSource = this.productTypeMapper.Select(out _);
             this.setProductType(this.productType);
             deleteButton.IsEnabled = productType != null?true: false;
         }

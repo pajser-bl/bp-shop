@@ -1,0 +1,44 @@
+﻿<Window x:Class="Shop.View.EditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shop.View"
+        mc:Ignorable="d"
+        Title="EditProductWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Label Name="idLable" Grid.Row="1" Grid.Column="1" Content="ID"/>
+        <TextBox Name="idTextBox" Grid.Row="1" Grid.Column="2" IsReadOnly="True"/>
+
+        <Label Name="nameLable" Grid.Row="2" Grid.Column="1" Content="Name"/>
+        <TextBox Name="nameTextBox" Grid.Row="2" Grid.Column="2"/>
+
+        <Label Name="descriptionLable" Grid.Row="3" Grid.Column="1" Content="Description"/>
+        <TextBox Name="descriptionTextBox" Grid.Row="3" Grid.Column="2"/>
+
+        <Label Name="productTypeLable" Grid.Row="4" Grid.Column="1" Content="Parent type"/>
+        <ComboBox Name="productTypeComboBox" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding ProductType}" DisplayMemberPath="name"/>
+
+        <Label Name="priceLable" Grid.Row="5" Grid.Column="1" Content="Price"/>
+        <TextBox Name="priceTextBox"  Grid.Row="5" Grid.Column="2" PreviewTextInput="NumberValidationTextBox"/>
+
+        <Button Name="deleteButton" Grid.Row="6" Grid.Column="1" Content="Delete" Click="deleteButton_Click"/>
+        <Button Name="saveButton" Grid.Row="6" Grid.Column="2" Content="Save" Click="saveButton_Click"/>
+    </Grid>
+</Window>
