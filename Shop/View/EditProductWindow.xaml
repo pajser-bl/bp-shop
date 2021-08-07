@@ -33,7 +33,7 @@
         <TextBox Name="descriptionTextBox" Grid.Row="3" Grid.Column="2"/>
 
         <Label Name="productTypeLable" Grid.Row="4" Grid.Column="1" Content="Parent type"/>
-        <ComboBox Name="productTypeComboBox" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding ProductType}" DisplayMemberPath="name"/>
+        <ComboBox Name="productTypeComboBox" Grid.Row="4" Grid.Column="2" DisplayMemberPath="name"/>
 
         <Label Name="priceLable" Grid.Row="5" Grid.Column="1" Content="Price"/>
         <TextBox Name="priceTextBox"  Grid.Row="5" Grid.Column="2" PreviewTextInput="NumberValidationTextBox"/>

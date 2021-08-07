@@ -2,17 +2,9 @@
 using Shop.DAO.Mappers;
 using Shop.DAO.Models.Shop;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Shop.View
 {
@@ -33,7 +25,8 @@ namespace Shop.View
 
         public void updateProducts()
         {
-            Products.ItemsSource = this.productMapper.Select(out _);
+            Products.ItemsSource = this.productMapper.Select(out _).ToList();
+            Console.WriteLine(Products.Items);
         }
 
 

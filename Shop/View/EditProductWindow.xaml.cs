@@ -46,8 +46,8 @@ namespace Shop.View
                 idTextBox.Text = product.id != null ? product.id.ToString() : "";
                 nameTextBox.Text = product.name != null ? product.name.ToString() : "";
                 descriptionTextBox.Text = product.description!= null ? product.description.ToString() : "";
-                productTypeComboBox.SelectedItem = product.id_product_type;
-                priceTextBox.Text = product.price!= null ? product.description.ToString() : "0.0";
+                productTypeComboBox.SelectedItem = product.productType;
+                priceTextBox.Text = product.price!= null ? product.price.ToString() : "0.0";
             }
             
         }
