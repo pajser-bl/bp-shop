@@ -21,13 +21,15 @@ namespace Shop.View
     {
         private Product product;
         private ProductMapper productMapper;
+        private List<ProductType> productTypes;
         private ProductTypeMapper productTypeMapper;
         public EditProductWindow(Product product)
         {
             InitializeComponent();
             this.productMapper = new ProductMapper(Utils.GetSqlSession());
             this.productTypeMapper = new ProductTypeMapper(Utils.GetSqlSession());
-            productTypeComboBox.ItemsSource = this.productTypeMapper.Select(out _);
+            this.productTypes = this.productTypeMapper.Select(out _);
+            productTypeComboBox.ItemsSource = this.productTypes;
             this.product = product;
             setProduct(product);
             deleteButton.IsEnabled = product != null ? true : false;
@@ -46,7 +48,7 @@ namespace Shop.View
                 idTextBox.Text = product.id != null ? product.id.ToString() : "";
                 nameTextBox.Text = product.name != null ? product.name.ToString() : "";
                 descriptionTextBox.Text = product.description!= null ? product.description.ToString() : "";
-                productTypeComboBox.SelectedItem = product.productType;
+                productTypeComboBox.SelectedIndex = this.productTypes.FindIndex(_product=>_product.id==product.id_product_type);
                 priceTextBox.Text = product.price!= null ? product.price.ToString() : "0.0";
             }
             

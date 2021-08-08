@@ -21,13 +21,15 @@ namespace Shop.View
     public partial class EditArticleTypeWindow : Window
     {
         private ProductType productType;
+        private List<ProductType> productTypes;
         private ProductTypeMapper productTypeMapper;
         public EditArticleTypeWindow(ProductType productType)
         {
             InitializeComponent();
             this.productTypeMapper = new ProductTypeMapper(Utils.GetSqlSession());
             this.productType = productType;
-            parentTypeComboBox.ItemsSource = this.productTypeMapper.Select(out _);
+            this.productTypes = this.productTypeMapper.Select(out _);
+            parentTypeComboBox.ItemsSource = this.productTypes;
             this.setProductType(this.productType);
             deleteButton.IsEnabled = productType != null?true: false;
         }
@@ -40,7 +42,7 @@ namespace Shop.View
                 nameTextBox.Text = productType.name != null ? productType.name.ToString() : "";
                 descriptionTextBox.Text = productType.description != null ? productType.description.ToString() : "";
                 if(productType.id_parent_product_type != null) { 
-                    parentTypeComboBox.SelectedItem = productType.id_parent_product_type;
+                    parentTypeComboBox.SelectedIndex = this.productTypes.FindIndex(_productType=>_productType.id==productType.id_parent_product_type);
                 }
             }
         }
