@@ -7,6 +7,32 @@
         mc:Ignorable="d"
         Title="UserWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="1" Grid.Column="1">
+            <TabItem x:Name="types" Header="Shop">
+                <Grid>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="products" Header="My orders">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="0" Grid.Column="1" x:Name="Products" CanUserDeleteRows="False" MouseDoubleClick="Products_MouseDoubleClick" IsReadOnly="True"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
