@@ -23,10 +23,15 @@
             <TabItem x:Name="types" Header="Product types">
                 <Grid>
                     <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-                        <TreeView x:Name="ProductTypeTree" Grid.Row="0" MouseDoubleClick="ProductType_MouseDoubleClick">
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TreeView x:Name="ProductTypeTree" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" MouseDoubleClick="ProductType_MouseDoubleClick">
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate DataType="{x:Type self:ProductType}" ItemsSource="{Binding subTypes}">
                                 <TextBlock Text="{Binding name}"/>
@@ -42,7 +47,16 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Grid.Row="0" Grid.Column="1" x:Name="Products" CanUserDeleteRows="False" MouseDoubleClick="Products_MouseDoubleClick" IsReadOnly="True"/>
+                    <DataGrid Grid.Row="0" Grid.Column="1" x:Name="Products" AutoGenerateColumns="False" CanUserDeleteRows="False" MouseDoubleClick="Products_MouseDoubleClick" IsReadOnly="True">
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Type" Binding="{Binding productType.name}"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding price}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <Button x:Name="NewProduct" FontSize="15" Margin="8" Content="New product" Click="NewProduct_Click" Grid.Row="1" Height="30"/>
                 </Grid>
             </TabItem>

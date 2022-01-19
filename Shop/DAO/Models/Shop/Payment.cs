@@ -15,5 +15,6 @@ namespace Shop.DAO
         public DateTime datetime;
         public int id_paymentStatus;
         public PaymentStatus status;
+        public float amount;
     }
 }

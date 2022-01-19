@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Shop.View"
+        xmlns:self="clr-namespace:Shop.DAO.Models.Shop"
         mc:Ignorable="d"
         Title="UserWindow" Height="450" Width="800">
     <Grid>
@@ -21,7 +22,24 @@
         <TabControl Grid.Row="1" Grid.Column="1">
             <TabItem x:Name="types" Header="Shop">
                 <Grid>
-                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TreeView x:Name="ProductTypeTree" Grid.Row="0" Grid.Column="0" MouseLeftButtonUp="ProductTypeTree_MouseLeftButtonUp">
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type self:ProductType}" ItemsSource="{Binding subTypes}">
+                                <TextBlock Text="{Binding name}"/>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <DataGrid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Button Grid.Column="2" x:Name="shoppingCartButton" FontSize="15" Margin="8" Content="Shopping cart" Click="ShoppingCart_Click" Grid.Row="1" Height="30"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="products" Header="My orders">
@@ -30,7 +48,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Grid.Row="0" Grid.Column="1" x:Name="Products" CanUserDeleteRows="False" MouseDoubleClick="Products_MouseDoubleClick" IsReadOnly="True"/>
+                    <!--<DataGrid Grid.Row="0" Grid.Column="1" x:Name="Products" CanUserDeleteRows="False" MouseDoubleClick="Products_MouseDoubleClick" IsReadOnly="True"/>-->
                 </Grid>
             </TabItem>
         </TabControl>

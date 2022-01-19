@@ -68,7 +68,7 @@ namespace Shop
                             break;
                         }
                 }
-                this.Hide();
+                this.Close();
             }
 
 
