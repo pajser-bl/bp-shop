@@ -1,18 +1,34 @@
 ﻿using MySqlConnector;
 using Shop.DAO.Mappers;
 using Shop.DAO.Models.Shop;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows;
 using System.Windows.Documents;
 
 namespace Shop
 {
     class Utils
     {
+
+        public static void TestSQLConnection() {
+            var TestVariable = "";
+            try {
+                MySqlDataReader reader = GetMySqlQueryReader("SHOW STATUS WHERE `variable_name` = 'Threads_connected';");
+                while (reader.Read())
+                {
+                    TestVariable = reader.GetString(0);
+                }
+            } catch (Exception) {
+                MessageBox.Show("Connection to DB failed...");
+                System.Windows.Application.Current.Shutdown();
+            }
+        }
         public static MySqlConnection GetSqlSession()
         {
-            return new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["MySQL"].ConnectionString);
+            return new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["MySQL"].ConnectionString.ToString());
         }
         public static MySqlDataReader GetMySqlQueryReader(string queryString)
         {

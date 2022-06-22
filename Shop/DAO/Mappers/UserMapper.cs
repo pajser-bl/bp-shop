@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
 namespace Shop.DAO

@@ -44,7 +44,7 @@ namespace Shop
         public static List<Role> GetRoles()
         {
             List<Role> roles = new List<Role>();
-            MySqlDataReader reader =Utils.GetMySqlQueryReader("select * from roles");
+            MySqlDataReader reader = Utils.GetMySqlQueryReader("select * from roles");
             while (reader.Read())
             {
                 roles.Add(new Role()

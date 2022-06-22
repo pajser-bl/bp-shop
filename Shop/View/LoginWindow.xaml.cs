@@ -24,6 +24,7 @@ namespace Shop
         public LoginWindow()
         {
             InitializeComponent();
+            Utils.TestSQLConnection();
         }
         private void StackPanel_KeyDown(object sender, KeyEventArgs e)
         {
