@@ -1,0 +1,12 @@
+[admin]
+user:	admin
+pass:	test
+------------------
+[shopkeeper]
+user:	manager
+pass:	test
+------------------
+[customer]
+user:	user
+pass:	test
+
