@@ -1,2 +1,2 @@
 # bp-shop
-Shity c# project for colladge class. Docs are in serbian in /tools.
+Shity c# project for university class. Docs are in serbian in /tools.
